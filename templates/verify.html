@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Verification{% endblock %}
+{% block content %}
+  
+    <div class="flex justify-center items-center h-screen">
+        <div class="frm bg-[#0000a4] p-6 rounded-md text-center">
+            <h2 id="verify-ttl" class="font-serif text-5xl mb-4 text-white">Verificatie code</h2>
+            <h2 class=" text-2  text-base mt-4 text-white">Voer alstublieft hier uw 6 cijferige verificatie </h2>
+            <h2 class=" text-2  text-base mb-4 text-white">code in die u heeft ontvangen in uw E-mail</h2>
+            <form method="POST" action="/verify" class="verification-form">
+                <label for="verification_code" class="hidden"></label>
+                <input type="text" placeholder="000000" name="verification_code" class="border p-2 rounded-md mb-4" required>
+                <button type="submit" class="btn bg-green-500 rounded-full px-6 py-2 text-white">Verifiëren</button>
+            </form>
+        </div>
+    </div>
+    
+{% endblock %}

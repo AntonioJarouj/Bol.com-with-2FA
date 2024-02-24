@@ -1,0 +1,62 @@
+{% extends "base.html"%}
+
+{%block title%}Profile{%endblock%}
+
+{% block content%}
+
+<div class="container mx-auto flex">
+    <div class="hidden space-y-6 p-10 pb-16 md:block bg-white">
+        <div class="space-y-0.5">
+            <h2 class="text-2xl font-bold tracking-tight">Instellingen</h2>
+            <p class="text-muted-foreground">
+                Beheer hier je account instellingen.
+            </p>
+        </div>
+        
+        <div class="shrink-0 bg-border h-[1px] w-full"></div>
+        <div class="flex flex-col space-y-8 lg:flex-row lg:space-x-12 lg:space-y-0">
+            <nav class="flex space-x-2 lg:flex-col lg:space-x-0 lg:space-y-1">
+                <a class="inline-flex items-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:text-accent-foreground h-9 px-4 py-2 hover:bg-transparent hover:underline justify-start"
+                 href="/bedrijf">Bedrijf</a>
+                <a class="inline-flex items-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 hover:text-accent-foreground h-9 px-4 py-2 bg-muted hover:bg-muted justify-start"
+                 href="/account">Account</a>
+            </nav>
+
+            <div class="flex-1 lg:max-w-3xl"> 
+                
+                <form class="mx-auto max-w-3xl p-8 bg-white shadow-md rounded-md" method="post" action="{{ url_for('view.profile') }}">
+                    <div>
+                        <div class="text-black text-xl">Bedrijfsgegevens</div>
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-gray-600" for="firstname"> E-mail </label>
+                            <input class="mt-1 p-2 w-full border rounded-md" id="firstname" type="text" name="firstname" value="{{ user[6] }}" readonly />
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-gray-600" for="bankrekening">Bankrekening </label>
+                            <input class="mt-1 p-2 w-full border rounded-md" id="bankrekening" type="text" name="bankrekening" value="{{ user[3] }}" readonly />
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-gray-600" for="KvK">KvK</label>
+                            <input class="mt-1 p-2 w-full border rounded-md" id="KvK" type="number" name="KvK" value="{{ user[4] }}" readonly />
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="block text-sm font-medium text-gray-600" for="bedrijfsnaam">Bedrijfsnaam</label>
+                            <input class="mt-1 p-2 w-full border rounded-md" id="bedrijfsnaam" type="text" name="bedrijfsnaam" value="{{ user[5] }}" readonly />
+                        </div>
+
+                        <div>
+                            <p>Let op: als u uw bedrijfsgegevens wilt wijzigen, vragen wij u vriendelijk om contact met ons op te nemen via <a href="/aanvragen" style="color: blue;">deze pagina</a>.</p>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{%block title%}Home{%endblock%}
+
+{% block content%}
+
+<div class="container mx-auto mt-8 flex flex-wrap justify-center">
+
+    <!-- Kaart 1 - Aanvragen -->
+    <div class="max-w-sm mx-4 mb-8 bg-white rounded-md shadow-md overflow-hidden">
+        <div class="p-4">
+            <h2 class="text-xl font-bold mb-2">Aanvragen</h2>
+            <p class="text-gray-600">Plaats hier uw aanvragen en ontvang snel antwoord van ons team.</p>
+        </div>
+        <div class="bg-gray-100 py-2 px-4 mt-4">
+            <a href="/aanvragen" class="text-blue-500 hover:underline">Ga naar Aanvragen</a>
+        </div>
+    </div>
+
+    <!-- Kaart 2 - Dashboard -->
+    <div class="max-w-sm mx-4 mb-8 bg-white rounded-md shadow-md overflow-hidden">
+        <div class="p-4">
+            <h2 class="text-xl font-bold mb-2">Dashboard</h2>
+            <p class="text-gray-600">Bekijk uw dashboard voor statistieken en rapporten.</p>
+        </div>
+        <div class="bg-gray-100 py-2 px-4 mt-4">
+            <a href="/dashboard" class="text-blue-500 hover:underline">Ga naar Dashboard</a>
+        </div>
+    </div>
+
+    <!-- Kaart 3 - Chatbot -->
+    <div class="max-w-sm mx-4 mb-8 bg-white rounded-md shadow-md overflow-hidden">
+        <div class="p-4">
+            <h2 class="text-xl font-bold mb-2">Chatbot</h2>
+            <p class="text-gray-600">Start een gesprek met onze chatbot voor directe hulp.</p>
+        </div>
+        <div class="bg-gray-100 py-2 px-4 mt-4">
+            <a href="/vragen" class="text-blue-500 hover:underline">Start de Chatbot</a>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+{%endblock%}

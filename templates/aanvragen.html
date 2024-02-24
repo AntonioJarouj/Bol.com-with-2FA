@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{%block title%}Aanvragen{%endblock%}
+
+{% block content%}
+
+<div class="flex items-center justify-center h-screen">
+    <div class="w-full max-w-lg">
+        <div class="bg-white shadow-md rounded-md p-8">
+            <h1 class="text-3xl font-bold mb-4">Aanvragen</h1>
+            <p class="text-sm text-gray-500 mb-4">Gegevens veranderen? Of een vraag voor ons? Vul het onderstaande formulier in om een aanvraag in te dienen bij ons team.</p>
+            <p class="text-sm text-gray-500 mb-4">Wil je gelijk antwoord? Probeer <a class="text-bold text-blue-700 text-decoration-line: underline;" href="/vragen">hier</a> onze chat functie!</p>
+
+            <form action="" method="post">
+                <div class="mb-4">
+                    <label for="onderwerp" class="block text-sm font-medium text-gray-600">Onderwerp</label>
+                    <input type="text" id="onderwerp" name="onderwerp" class="mt-1 p-2 w-full border rounded-md">
+                </div>
+
+                <div class="mb-4">
+                    <label for="bericht" class="block text-sm font-medium text-gray-600">Bericht</label>
+                    <textarea id="bericht" name="bericht" rows="4" class="mt-1 p-2 w-full border rounded-md"></textarea>
+                </div>
+
+                <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-700">Verstuur</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+{%endblock%}

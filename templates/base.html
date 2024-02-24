@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/main.css">
+    <title>bol.com-Partner {% block title%} Home {%endblock%}</title>
+    <link rel="icon" type="image/x-icon" href="static\Images\apple-touch-icon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <script src="https://unpkg.com/flowbite@1.5.1/dist/flowbite.js"></script>
+</head>
+
+<body>
+        <nav class="bg-white border-gray-200 dark:bg-[#0000a4]">
+            <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+            <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
+                <img src="static\Images\bol-wit.png" class="h-10" alt="bol.com logo" />
+                <span class="self-center text-3xl font-semibold whitespace-nowrap dark:text-white">Partnerplatform</span>
+            </a>
+            <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
+                <span class="sr-only">Open main menu</span>
+                <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+                </svg>
+            </button>
+
+            <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+            <ul class="font-medium flex flex-col p-4 md:p-0 mt-4 border border-gray-100 rounded-lg bg-gray-50 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-white dark:bg-white-600 md:dark:bg-[#0000a4] dark:border-white-700">
+                {% if 'email' in session and 'verification_code' not in session %}
+                    <li>
+                        <a href="/" class="block py-2 px-3block px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-400 dark:hover:text-white md:dark:hover:bg-transparent">Home</a>
+                    </li>
+                    <li>
+                        <a href="/vragen" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-400 dark:hover:text-white md:dark:hover:bg-transparent">
+                            Vragen?</a>
+                    </li>
+        
+                    <li>
+                        <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar" class="flex items-center justify-between w-full py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:border-gray-700 dark:hover:bg-gray-700 md:dark:hover:bg-transparent">
+                            Instellingen<svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                              </svg>
+                        </button>
+                        <!-- Dropdown menu -->
+                        <div id="dropdownNavbar" class="z-10 hidden font-normal bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-200 dark:divide-gray-600">
+                            <ul class="py-2 text-sm font-semibold text-gray-700 dark:text-gray-700" aria-labelledby="dropdownLargeButton">
+                                <li>
+                                <a href="/dashboard" class="block px-4 py-2 hover:bg-gray-700 dark:hover:bg-gray-200 dark:hover:text-blue-700">Dashboard</a>
+                                </li>
+                                <li>
+                                <a href="/account" class="block px-4 py-2 hover:bg-gray-700 dark:hover:bg-gray-200 dark:hover:text-blue-700">Account</a>
+                                </li>
+                                <li>
+                                <a href="/aanvragen" class="block px-4 py-2 hover:bg-gray-700 dark:hover:bg-gray-200 dark:hover:text-blue-700">Aanvragen</a>
+                                </li>
+                            </ul>
+                                <div class="py-1">
+                                    <a href="{{ url_for('auth.logout') }}" class="block px-4 py-2 text-sm font-semibold hover:bg-gray-700 dark:hover:bg-gray-200 dark:hover:text-blue-700">Uitloggen</a>
+                                </div>
+                        </div>
+                    </li>
+                  
+                    
+                {% else %}
+                    <li>
+                        <a href="/login" class="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">
+                            Partner-Login</a>
+                    </li>
+
+                {% endif %}
+            </ul>
+            </div>
+            <div id="message-container" class="message-container">
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                        {% for category, message in messages %}
+                            {% if category == 'error' %}
+                                <p class="alert" style="background-color: #ff2400;">&#9888; {{ message }}</p>
+                            {% elif category == 'success' %}
+                                <p class="alert" style="background-color: #00ad74;">&#9989; {{ message }}</p>
+                            {% elif category == 'info' %}
+                                <p class="alert" style="background-color: #0000a4;">&#8505; {{ message }}</p>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+                <script src="../static/scripts/messages.js"></script>
+                <style>
+                    .message-container {
+                        position: absolute;
+                        top: 20%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                        max-width: 300px;
+                        width: 50%;
+                        right: 10px;
+                        z-index: 1050;
+                        text-align: center;
+                      }
+                      
+                      .alert {
+                        padding: 10px;
+                        background-color: #004aad; /* Blue background to match your color scheme */
+                        color: white;
+                        margin-bottom: 15px;
+                        border-radius: 4px;
+                        text-align: center;
+                        opacity: 1;
+                        transition: opacity 0.3s ease-in-out;
+                      }
+                      
+                </style>
+
+            </div>
+        </div>
+        </nav>
+
+        <section class="content">
+            {% block content %}{%endblock%}
+            
+</body>
+</html>

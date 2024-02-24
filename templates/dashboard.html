@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{%block title%}Dashboard{%endblock%}
+
+{% block content%}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+<div class="container mx-auto mt-8 p-8 bg-gray-800 rounded-md shadow-md text-white font-sans">
+
+    <h1 class="text-3xl font-bold mb-8">Dashboard</h1>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <div class="bg-gray-700 rounded-md p-6 shadow-md">
+            <h2 class="text-xl font-bold mb-4">Producten verkocht Januari</h2>
+            <p class="text-3xl font-bold text-blue-500">1232</p>
+        </div>
+
+        <div class="bg-gray-700 rounded-md p-6 shadow-md">
+            <h2 class="text-xl font-bold mb-4">Inkomsten Januari</h2>
+            <p class="text-3xl font-bold text-green-500">$ 10.418,57</p>
+        </div>
+
+        <div class="bg-gray-700 rounded-md p-6 shadow-md">
+            <h2 class="text-xl font-bold mb-4">Klanten Januari</h2>
+            <p class="text-3xl font-bold text-orange-500">986</p>
+        </div>
+
+    </div>
+
+    <div class="mt-8">
+        <h2 class="text-xl font-bold mb-4">Maandelijkse Activiteit</h2>
+        <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+        <script>
+            const xValues = ["Sep", "Okt", "Nov", "Dec", "Jan"];
+            const yValues = [55, 49, 44, 48, 40,];
+            const barColors = ["red", "green","blue","purple","orange",];
+
+            new Chart("myChart", {
+            type: "bar",
+            data: {
+                labels: xValues,
+                datasets: [{
+                backgroundColor: barColors,
+                data: yValues
+                }]
+            },
+            options: {
+                legend: {display: false},
+                title: {
+                display: true,
+                }
+            }
+            });
+        </script>
+    </div>
+
+</div>
+
+
+{%endblock%}
