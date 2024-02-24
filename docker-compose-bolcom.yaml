@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  website:
+    build: .
+    ports:
+      - "5001:5000"
+    depends_on:
+      - database
+    environment:
+      - FLASK_APP=__init__.py
+
+  database:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: 'root'
+      MYSQL_DATABASE: 'user'
+      MYSQL_USER: 'secure-logix-web'
+      MYSQL_PASSWORD: '12345678910'
+    ports:
+      - "3308:3306"
+    volumes:
+      - database_data:/var/lib/mysql
+      - ./database.sql:/docker-entrypoint-initdb.d/database.sql
+
+volumes:
+  database_data:
