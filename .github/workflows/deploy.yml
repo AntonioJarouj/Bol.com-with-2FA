@@ -25,6 +25,5 @@ jobs:
       uses: azure/webapps-deploy@v2
       with:
         app-name: 'bolcom' # Vervang dit door de naam van je Azure Web App
-        slot-name: 'production' # Als je geen deployment slot gebruikt, kan dit worden weggelaten
         publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }} # De publish profile moet worden ingesteld in je repository secrets
         package: .
