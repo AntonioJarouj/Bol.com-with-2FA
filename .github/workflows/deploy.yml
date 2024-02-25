@@ -14,7 +14,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: '3.12' # Vervang dit door de Python-versie die je gebruikt
+        python-version: '3.8' # Vervang dit door de Python-versie die je gebruikt
 
     - name: Install dependencies
       run: |
@@ -25,6 +25,6 @@ jobs:
       uses: azure/webapps-deploy@v2
       with:
         app-name: 'bolcom' # Vervang dit door de naam van je Azure Web App
-        # slot-name: 'production' # Als je geen deployment slot gebruikt, kan dit worden weggelaten
+        slot-name: 'production' # Als je geen deployment slot gebruikt, kan dit worden weggelaten
         publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }} # De publish profile moet worden ingesteld in je repository secrets
         package: .
