@@ -1,7 +1,7 @@
 from flask import render_template, Blueprint, redirect, url_for, session, flash, abort, jsonify, request
 from datetime import datetime
 import mysql.connector
-from . import db
+import db
 import os
 
 config = db.connect_to_database()
