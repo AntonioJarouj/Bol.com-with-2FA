@@ -3,7 +3,7 @@ from flask import (
 )
 from datetime import timedelta
 import mysql.connector, bcrypt, random, os, ssl, smtplib
-from . import db
+import db
 from dotenv import load_dotenv
 from email.message import EmailMessage
 

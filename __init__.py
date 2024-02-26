@@ -1,5 +1,5 @@
 from flask import Flask
-from . import auth, db, view
+import auth, db, view
 config = db.connect_to_database()
 app = Flask(__name__, instance_relative_config=True)
 app.secret_key = 'Security@roject!2FA'
